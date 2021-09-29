@@ -17,6 +17,13 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.starts_with_non_number("# is used to comment a line in Python"), True)
 
+        self.assertEqual(pythonBasics3.starts_with_non_number("This is a comment with no number."),True)
+
+        self.assertEqual(pythonBasics3.starts_with_non_number("This comment has a number a the end. 3"), True)
+
+        self.assertEqual(pythonBasics3.starts_with_non_number("1550, is a number that is greater than 1000"), False)
+
+
         # Please add three more test cases following the order above
 
 #Test case for multiple_words
@@ -26,7 +33,7 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.multiple_words(" "), False)
 
-        self.assertEqual(pythonBasics3.multiple_words("Different\twhitespace"), False)
+        self.assertEqual(pythonBasics3.multiple_words("Different\\whitespace"), False)
 
         self.assertEqual(pythonBasics3.multiple_words("It's-all-one-word"), False)
 
