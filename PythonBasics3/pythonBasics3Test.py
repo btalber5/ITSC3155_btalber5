@@ -39,6 +39,12 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.multiple_words(" one-sided? "), False)
 
+        self.assertEqual(pythonBasics3.multiple_words("thisisoneword"), False)
+
+        self.assertEqual(pythonBasics3.multiple_words("This is more than one word!"), True)
+
+        self.assertEqual(pythonBasics3.multiple_words("thisis twowords"), True)
+
         # Please add three more test cases following the order above
 
 
@@ -56,6 +62,14 @@ class TestPythonBasicsOne(unittest.TestCase):
         self.assertEqual(pythonBasics3.reserved_us_tld("https://www.norad.mil"), True)
 
         self.assertEqual(pythonBasics3.reserved_us_tld("https://www.congress.gov"), True)
+
+        self.assertEqual(pythonBasics3.reserved_us_tld("https://www.youtube.com"), False)
+
+        self.assertEqual(pythonBasics3.reserved_us_tld("https://www.github.com"), False)
+
+        self.assertEqual(pythonBasics3.reserved_us_tld("https://www.yourmomshouse.gottem"), False)
+
+
 
         # This does match the description (https and .edu) but it includes extra stuff. Feel free to implement this functionality.
         self.assertEqual(pythonBasics3.reserved_us_tld("https://selfservice.uncc.edu/pls/BANPROD/twbkwbis.P_GenMenu?name=homepage"), False)
