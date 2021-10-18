@@ -14,6 +14,11 @@ app = Flask(__name__)     # create an app
 def index():
     a_user = {'firstname': 'Braxton ', 'lastname': 'Talbert','email': 'btalber5@uncc.edu'}
     return render_template('index.html',user = a_user)
+@app.route('/notes')
+def get_notes():
+    notes = {1: {'title': 'First Note', 'text': 'This is my first note.', 'date': '10-18-21'},
+             2: {'title':'Second Note', 'text': 'This is my second note.', 'date': '10-19-21'}}
+    return render_template('notes.html',notes=notes)
 
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
