@@ -6,9 +6,11 @@
         <meta name="description" content="UNCC Notes App">
         <title>UNCC Notes App - View your Note</title>
         <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
+      <nav> <a href="/notes"> My notes || </a>
+      <a href="/index"> Home </a> </nav>
         <h1>Note detials</h1>
 
         <table>
@@ -21,7 +23,7 @@
                 <td>{{ note.title }}</td>
                 <td>{{ note.text }}</td>
                 <td>{{ note.date }}</td>
-            </tr>
+
         </table>
     </body>
 </html>
