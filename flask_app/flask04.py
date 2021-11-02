@@ -10,9 +10,14 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)  # create an app
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
+from database import db
+db = SQLAlchemy()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask_note_app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+db.init_app(app)
+with app.app_context():
+    db.create_all() 
 
-db = SQLAlchemy(app)
 
 
 class Notes(db.Model):
@@ -65,7 +70,7 @@ def new_note():
         return render_template('new.html', user=a_user)
 
 
-app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
+app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=False)
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
