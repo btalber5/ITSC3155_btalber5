@@ -6,7 +6,7 @@
         <meta name="description" content="UNCC Notes App">
         <title>UNCC Notes App - View your Notes</title>
         <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
     <body>
       <nav> <a href="/notes"> My notes || </a>
@@ -20,10 +20,10 @@
                 <th>Title</th>
                 <th>Date</th>
             </tr>
-            {% for key, value in notes.items() %}
+            {% for note in notes %}
             <tr>
-                <td><a href = "notes/{{key}}">{{ value.title }}</a></td>
-                <td>{{ value.date }}</td>
+                <td><a href = '{{url_for('get_note', note_id = note.id)}}'>{{ note.title }}</a></td>
+                <td>{{ note.date }}</td>
             </tr>
             {% endfor %}
         </table>
